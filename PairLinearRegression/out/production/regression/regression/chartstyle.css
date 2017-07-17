@@ -1,0 +1,82 @@
+/*==============Исходные данные==============*/
+.default-color0.chart-series-line {
+    -fx-stroke: transparent;
+}
+
+.default-color0.chart-line-symbol {
+    -fx-background-color: transparent, red;
+}
+
+.default-color0.chart-legend-item-symbol {
+    -fx-background-color: red;
+}
+
+
+/*===============Регрессионная модель===========*/
+.default-color1.chart-series-line {
+     -fx-stroke: black;
+ }
+
+.default-color1.chart-line-symbol {
+    -fx-background-color: transparent, transparent;
+}
+
+.default-color1.chart-legend-item-symbol {
+    -fx-background-color: black;
+}
+
+
+/*===============Прогнозируемые данные===========*/
+.default-color2.chart-series-line {
+    -fx-stroke: transparent;
+}
+
+.default-color2.chart-line-symbol {
+    -fx-background-color: green, white;
+}
+
+.default-color2.chart-legend-item-symbol {
+    -fx-background-color: green;
+}
+
+
+/*===============Интервал прогноза===========*/
+.default-color3.chart-series-line {
+    -fx-stroke: transparent;
+}
+
+.default-color3.chart-line-symbol {
+    -fx-background-color: transparent, lime;
+}
+
+.default-color3.chart-legend-item-symbol {
+    -fx-background-color: lime;
+}
+
+
+/*===============Доверительный интервал a===========*/
+.default-color4.chart-series-line, .default-color5.chart-series-line {
+    -fx-stroke: lightskyblue;
+}
+
+.default-color4.chart-line-symbol, .default-color5.chart-line-symbol {
+    -fx-background-color: transparent, transparent;
+}
+
+.default-color4.chart-legend-item-symbol, .default-color5.chart-legend-item-symbol {
+    -fx-background-color: lightskyblue;
+}
+
+
+/*===============Доверительный интервал b===========*/
+.default-color6.chart-series-line, .default-color7.chart-series-line {
+    -fx-stroke: lightsteelblue;
+}
+
+.default-color6.chart-line-symbol, .default-color7.chart-line-symbol {
+    -fx-background-color: transparent, transparent;
+}
+
+.default-color6.chart-legend-item-symbol, .default-color7.chart-legend-item-symbol {
+    -fx-background-color: lightsteelblue;
+}

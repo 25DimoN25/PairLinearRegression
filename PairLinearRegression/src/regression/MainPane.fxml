@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.text.Font?>
+
+<SplitPane dividerPositions="0.25, 0.75" stylesheets="@chartstyle.css" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="regression.Controller">
+
+	<ScrollPane>
+		<GridPane nodeOrientation="RIGHT_TO_LEFT">
+			<columnConstraints>
+				<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="300.0" minWidth="130.0" prefWidth="130.0"/>
+				<ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="300.0" minWidth="150.0" prefWidth="150.0"/>
+			</columnConstraints>
+
+			<Label text="Доверительные интерваллы" GridPane.columnSpan="2" GridPane.halignment="LEFT">
+				<GridPane.margin>
+					<Insets top="10.0"/>
+				</GridPane.margin>
+				<font>
+					<Font name="System Bold" size="12.0"/>
+				</font>
+			</Label>
+
+			<Label text="Значимость t-критерия = " GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1"/>
+			<TextField fx:id="intervalCoefficientsAlpha" nodeOrientation="LEFT_TO_RIGHT" promptText="вероятность" text="0.05" GridPane.rowIndex="1"/>
+
+			<Label text="интервал a: " GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+			<Label fx:id="intervalA" text="не расчитано" GridPane.rowIndex="2"/>
+
+			<Label text="интервал b: " GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+			<Label fx:id="intervalB" text="не расчитано" GridPane.rowIndex="3"/>
+
+			<Button mnemonicParsing="false" onAction="#calcIntervals" text="Расчитать" GridPane.halignment="LEFT" GridPane.rowIndex="4"/>
+
+
+			<Label text="Значимость по Стьюденту" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="5">
+				<GridPane.margin>
+					<Insets top="10.0"/>
+				</GridPane.margin>
+				<font>
+					<Font name="System Bold" size="12.0"/>
+				</font>
+			</Label>
+
+			<Label text="Значимость t-критерия = " GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="6"/>
+			<TextField fx:id="studAlpha" nodeOrientation="LEFT_TO_RIGHT" promptText="вероятность" text="0.05" GridPane.rowIndex="6"/>
+
+			<Label text="t_a-расч: " GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+			<Label fx:id="studTaCalc" text="не расчитано" GridPane.rowIndex="7"/>
+
+			<Label text="t_b-расч: " GridPane.columnIndex="1" GridPane.rowIndex="8"/>
+			<Label fx:id="studTbCalc" text="не расчитано" GridPane.rowIndex="8"/>
+
+			<Label text="t_r-расч: " GridPane.columnIndex="1" GridPane.rowIndex="9"/>
+			<Label fx:id="studTrCalc" text="не расчитано" GridPane.rowIndex="9"/>
+
+			<Label text="t-табл: " GridPane.columnIndex="1" GridPane.rowIndex="10"/>
+			<Label fx:id="studTTable" text="не расчитано" GridPane.rowIndex="10"/>
+
+			<Label text="значимость a: " GridPane.columnIndex="1" GridPane.rowIndex="11"/>
+			<Label fx:id="studIsValidA" text="не расчитано" GridPane.rowIndex="11"/>
+
+			<Label text="значимость b: " GridPane.columnIndex="1" GridPane.rowIndex="12"/>
+			<Label fx:id="studIsValidB" text="не расчитано" GridPane.rowIndex="12"/>
+
+			<Label text="значимость в целом: " GridPane.columnIndex="1" GridPane.rowIndex="13"/>
+			<Label fx:id="studIsValidFull" text="не расчитано" GridPane.rowIndex="13"/>
+
+			<Button mnemonicParsing="false" onAction="#tCriterion" text="Расчитать" GridPane.halignment="LEFT" GridPane.rowIndex="14"/>
+
+
+			<Label text="Значимость по Фишеру" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="15">
+				<GridPane.margin>
+					<Insets top="10.0"/>
+				</GridPane.margin>
+				<font>
+					<Font name="System Bold" size="12.0"/>
+				</font>
+			</Label>
+
+			<Label text="Значимость F-критерия = " GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="16"/>
+			<TextField fx:id="fishAlpha" nodeOrientation="LEFT_TO_RIGHT" promptText="вероятность" text="0.05" GridPane.rowIndex="16"/>
+
+			<Label text="F-расч: " GridPane.columnIndex="1" GridPane.rowIndex="17"/>
+			<Label fx:id="fishFCalc" text="не расчитано" GridPane.rowIndex="17"/>
+
+			<Label text="F-табл: " GridPane.columnIndex="1" GridPane.rowIndex="18"/>
+			<Label fx:id="fishFTable" text="не расчитано" GridPane.rowIndex="18"/>
+
+			<Label text="значимость в целом: " GridPane.columnIndex="1" GridPane.rowIndex="19"/>
+			<Label fx:id="fishIsValidFull" text="не расчитано" GridPane.rowIndex="19"/>
+
+			<Button mnemonicParsing="false" onAction="#fCriterion" text="Расчитать" GridPane.halignment="LEFT" GridPane.rowIndex="20"/>
+
+
+			<Label text="Прогнозирование" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="21">
+				<GridPane.margin>
+					<Insets top="10.0"/>
+				</GridPane.margin>
+				<font>
+					<Font name="System Bold" size="12.0"/>
+				</font>
+			</Label>
+
+			<Label text="α = " GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="22"/>
+			<TextField fx:id="prognosesAlpha" nodeOrientation="LEFT_TO_RIGHT" promptText="вероятность" text="0.05" GridPane.rowIndex="22"/>
+
+			<Label text="Xпр = " GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="23"/>
+			<TextField nodeOrientation="LEFT_TO_RIGHT" promptText="значение фактора" GridPane.rowIndex="23" fx:id="xPrognoses"/>
+
+			<Button mnemonicParsing="false" onAction="#calcPrognoses" text="Прогноз" GridPane.halignment="LEFT" GridPane.rowIndex="24"/>
+
+			<Label fx:id="prognoses" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="25"/>
+
+			<padding>
+				<Insets left="10.0"/>
+			</padding>
+		</GridPane>
+	</ScrollPane>
+
+	<LineChart fx:id="plot" alternativeColumnFillVisible="true">
+		<xAxis>
+			<NumberAxis forceZeroInRange="false" side="BOTTOM"/>
+		</xAxis>
+		<yAxis>
+			<NumberAxis forceZeroInRange="false" side="LEFT"/>
+		</yAxis>
+	</LineChart>
+
+	<ScrollPane>
+		<GridPane>
+			<columnConstraints>
+				<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="300.0" minWidth="75.0" prefWidth="75.0"/>
+				<ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="300.0" minWidth="220.0" prefWidth="220.0"/>
+			</columnConstraints>
+
+			<Label text="Уравнение регрессии" GridPane.columnSpan="2" GridPane.halignment="LEFT">
+				<GridPane.margin>
+					<Insets top="10.0"/>
+				</GridPane.margin>
+				<font>
+					<Font name="System Bold" size="12.0"/>
+				</font>
+			</Label>
+			<Label text="y = " GridPane.rowIndex="1"/>
+			<Label fx:id="equation" text="вычисляется..." GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+
+			<Label text="Выборочная остаточная дисперсия" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="2">
+				<GridPane.margin>
+					<Insets top="10.0"/>
+				</GridPane.margin>
+				<font>
+					<Font name="System Bold" size="12.0"/>
+				</font>
+			</Label>
+			<Label text="S²ост = " GridPane.rowIndex="3"/>
+			<Label fx:id="S2rem" text="вычисляется..." GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+
+			<Label text="Выборочные дисперсии x, y" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="4">
+				<GridPane.margin>
+					<Insets top="10.0"/>
+				</GridPane.margin>
+				<font>
+					<Font name="System Bold" size="12.0"/>
+				</font>
+			</Label>
+			<Label text="S²x = " GridPane.rowIndex="5"/>
+			<Label fx:id="S2x" text="вычисляется..." GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+			<Label text="S²y = " GridPane.rowIndex="6"/>
+			<Label fx:id="S2y" text="вычисляется..." GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+
+
+			<Label text="Стандартные ошибки коэффициентов a, b" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="7">
+				<GridPane.margin>
+					<Insets top="10.0"/>
+				</GridPane.margin>
+				<font>
+					<Font name="System Bold" size="12.0"/>
+				</font>
+			</Label>
+			<Label text="ma = " GridPane.rowIndex="8"/>
+			<Label fx:id="ma" text="вычисляется..." GridPane.columnIndex="1" GridPane.rowIndex="8"/>
+			<Label text="mb = " GridPane.rowIndex="9"/>
+			<Label fx:id="mb" text="вычисляется..." GridPane.columnIndex="1" GridPane.rowIndex="9"/>
+
+
+			<Label text="Выборочный коэффициент парной корреляции" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="10">
+				<GridPane.margin>
+					<Insets top="10.0"/>
+				</GridPane.margin>
+				<font>
+					<Font name="System Bold" size="12.0"/>
+				</font>
+			</Label>
+			<Label text="rxy = " GridPane.rowIndex="11"/>
+			<Label fx:id="rxy" text="вычисляется..." GridPane.columnIndex="1" GridPane.rowIndex="11"/>
+
+
+			<Label text="Коэффициент детерминации" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="12">
+				<GridPane.margin>
+					<Insets top="10.0"/>
+				</GridPane.margin>
+				<font>
+					<Font name="System Bold" size="12.0"/>
+				</font>
+			</Label>
+			<Label text="R² = " GridPane.rowIndex="13"/>
+			<Label fx:id="R2" text="вычисляется..." GridPane.columnIndex="1" GridPane.rowIndex="13"/>
+
+			<Label text="Средняя ошибка аппроксимации регрессии" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="14">
+				<GridPane.margin>
+					<Insets top="10.0"/>
+				</GridPane.margin>
+				<font>
+					<Font name="System Bold" size="12.0"/>
+				</font>
+			</Label>
+			<Label text="avg(A) = " GridPane.rowIndex="15"/>
+			<Label fx:id="avgA" text="вычисляется..." GridPane.columnIndex="1" GridPane.rowIndex="15"/>
+
+			<padding>
+				<Insets left="10.0"/>
+			</padding>
+
+		</GridPane>
+	</ScrollPane>
+
+</SplitPane>
